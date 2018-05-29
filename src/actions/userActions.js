@@ -1,6 +1,7 @@
 import { push } from 'react-router-redux';
 import axios from 'axios';
 import { baseURL } from '../constants';
+import { analytics } from '../store';
 import { AsyncStorage } from 'react-native';
 
 // AsyncStorage.setItem('@GreyMattersApp:token', token);
@@ -294,6 +295,10 @@ function signup({ name, email, password, roles = ['reader'], history }) {
           .then(res => {
             if (res.data.success) {
               dispatch(login({ email, password, history }));
+              analytics.track({
+                userId: '0',
+                event: 'Signup',
+              });
             } else {
               dispatch(failure(res.data.message));
               console.log(res.data.message);
