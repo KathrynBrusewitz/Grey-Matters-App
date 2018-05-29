@@ -12,6 +12,7 @@ import {
   Image
 } from 'react-native';
 import { termsActions } from '../../actions';
+import { analytics } from '../../store';
 import styles from './ArticleStyles';
 import References from '../shared/References';
 import TermDialog from './TermDialog';
@@ -19,7 +20,7 @@ import TermDialog from './TermDialog';
 class ArticleView extends Component {
 	constructor(props) {
 		super(props);
-	}
+  }
 
 	handleTermPress(term) {
     let pattern = /<span>([\w\s]+)<\/span>/;
@@ -37,6 +38,11 @@ class ArticleView extends Component {
       {number: 2, citation: 'Martin, D. (2014, February 18). Daniel Cormier remembers the weight cut that almost killed him. FoxSports.com'},
       {number: 3, citation: 'Ting, L. et al. (2016). Brain Formaldehyde is Related to Water Intake Behavior. Aging and Disease, 7(5), 561-584.'},
     ];
+    analytics.page({
+      anonymousId: '0',
+      category: 'Articles',
+      name: this.props.content.title,
+    });
     return (
       <View>
         <ScrollView>

@@ -14,6 +14,11 @@ const styles = StyleSheet.create({
     padding: 20,
     flex: 5,
   },
+  titleText: {
+    fontSize: 28, 
+    fontWeight: 'bold',
+    paddingBottom: 15,
+  },
   metaData: {
     flexDirection: 'row', 
     borderTopColor: '#ff404e',

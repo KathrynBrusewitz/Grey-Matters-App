@@ -15,7 +15,6 @@ const ContentFeed = (props) => (
   <View style={[styles.content]}>
   {
     props.list ? props.list.map((item) => {
-      console.log(JSON.stringify(item, null, 4));
       return (
       <Link 
         to={`/${item.type}s/${item._id}`} 

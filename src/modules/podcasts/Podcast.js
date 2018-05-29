@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import styles from '../articles/ArticleStyles';
 import { contentActions } from '../../actions';
+import { analytics } from '../../store';
 import Loading from '../shared/Loading';
 import Unavailable from '../shared/Unavailable';
 import References from '../shared/References';
@@ -38,7 +39,11 @@ class Podcast extends Component {
         <Unavailable message='Podcast currently unavailable' />
       );
     }
-
+    analytics.page({
+      anonymousId: '0',
+      category: 'Podcasts',
+      name: this.props.content.title,
+    });
     return (
       <ScrollView>
         <View style={styles.image}>

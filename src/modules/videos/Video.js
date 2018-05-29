@@ -14,6 +14,7 @@ import {
 import Loading from '../shared/Loading';
 import Unavailable from '../shared/Unavailable';
 import { contentActions } from '../../actions';
+import { analytics } from '../../store';
 import styles from '../articles/ArticleStyles';
 import References from '../shared/References';
 
@@ -38,7 +39,11 @@ class Video extends Component {
         <Unavailable message='Video unavailable' />
       );
     }
-
+    analytics.page({
+      anonymousId: '0',
+      category: 'Videos',
+      name: this.props.content.title,
+    });
     return (
       <View>
         <View style={{height: 300}}>
