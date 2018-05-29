@@ -239,14 +239,11 @@ function logout({ history }) {
         dispatch(failure('Could not remove token.'));
         console.log('Could not remove token.');
       } else {
-        dispatch(success());
         dispatch(basicLogin());
         history.push('/');
       }
     });
   };
-
-  function success() { return { type: userConstants.LOGOUT } }
 }
 
 function sendResetLink({ email }) {

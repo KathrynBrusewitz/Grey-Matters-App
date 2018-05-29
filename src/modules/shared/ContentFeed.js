@@ -14,7 +14,9 @@ import BookmarkIcon from './BookmarkIcon';
 const ContentFeed = (props) => (
   <View style={[styles.content]}>
   {
-    props.list ? props.list.map((item) => (
+    props.list ? props.list.map((item) => {
+      console.log(JSON.stringify(item, null, 4));
+      return (
       <Link 
         to={`/${item.type}s/${item._id}`} 
         key={item._id} 
@@ -50,7 +52,7 @@ const ContentFeed = (props) => (
           </View>
         </View>
       </Link>
-    )) : null
+    )}) : null
   }
   </View>
 )
