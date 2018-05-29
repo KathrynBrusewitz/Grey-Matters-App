@@ -19,14 +19,10 @@ export const signupValidation = {
 }
 
 export const changePasswordValidation = {
-  password: {
+  currentPassword: {
     presence: {
-      message: '^Please enter a password'
+      message: '^Please enter your password'
     },
-    length: {
-      minimum: 5,
-      message: '^Your password must be at least 5 characters'
-    }
   },
   newPassword: {
     presence: {

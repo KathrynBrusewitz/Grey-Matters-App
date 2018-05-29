@@ -8,7 +8,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { NativeRouter, Route, BackButton as RouterBackButton } from 'react-router-native';
 import { history } from '../../store';
-
 import { Header } from 'react-native-elements';
 import styles from '../../styles.js';
 
