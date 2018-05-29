@@ -18,11 +18,16 @@ class ChangePassword extends Component {
 	  super(props);
 	}
 
+	componentDidMount() {
+		this.props.clearMessage();
+		this.props.clearConfirmation();
+	}
+
 	onPress() {
-    let password = !this.password ? this.password : this.password.trim();
+    let currentPassword = !this.currentPassword ? this.currentPassword : this.currentPassword.trim();
     let newPassword = !this.newPassword ? this.newPassword : this.newPassword.trim();
     let confirmNewPassword = !this.confirmNewPassword ? this.confirmNewPassword : this.confirmNewPassword.trim();
-    let errors = validate({ newPassword }, changePasswordValidation);
+    let errors = validate({ currentPassword, newPassword }, changePasswordValidation);
     if (errors) {
       for (let key in errors) {
         this.props.errorMessage(errors[key][0]);
@@ -32,7 +37,10 @@ class ChangePassword extends Component {
       this.props.errorMessage('Your password and password confirmation do not match');
     } else {
       this.props.clearMessage();
-			//TODO: put change password action call here
+			this.props.updateUser({ 
+				fields: {currentPassword, newPassword}, 
+				id: this.props.user._id, 
+			});
     }
   }
 
@@ -66,6 +74,7 @@ class ChangePassword extends Component {
 				/>
 				{this.props.message 
 				&& <Text style={[styles.formMessage, styles.red]}>{this.props.message}</Text>}
+				{this.props.confirmation && <Text style={[styles.formMessage, styles.green]}>{this.props.confirmation}</Text>}
 			</View>
     );
 	}
@@ -73,11 +82,14 @@ class ChangePassword extends Component {
 
 const mapStateToProps = state => ({
   user: state.user.user,
-  token: state.user.token,
+	token: state.user.token,
+	message: state.user.message,
+	confirmation: state.user.confirmation,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
 	updateUser: userActions.updateUser,
+	clearConfirmation: userActions.clearConfirmation,
 	clearMessage: userActions.clearMessage,
   errorMessage: userActions.errorMessage,
 }, dispatch);

@@ -153,6 +153,7 @@ export const userReducer = (state = USER_INITIAL, action) => {
         user: action.payload,
         isUpdatingUser: false,
         bookmarkIDSet: new Set(bookmarkIDsUpdate),
+        confirmation: 'Update complete',
       };
     case userConstants.UPDATE_USER_FAILURE:
       return {
