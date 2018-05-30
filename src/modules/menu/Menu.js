@@ -15,12 +15,7 @@ const Menu = (props) => (
     ? (
       <TouchableWithoutFeedback onPress={() => props.showMenu(false)}>
         <View style={styles.overlay}>
-        {/* <View 
-          style={styles.overlay} 
-          onPress={() => props.showMenu(false)}
-        >
-        </View> */}
-        <MenuLinks />
+          <MenuLinks />
         </View>
       </TouchableWithoutFeedback>
     )

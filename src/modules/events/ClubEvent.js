@@ -43,10 +43,12 @@ class ClubEvent extends Component {
         id: this.props.event._id,
       }
     });
+
     return (
       <ScrollView style={styles.container}>
         {this.props.event.coverImage ? (
           <AutoHeightImage
+            style={styles.image}
             width={Dimensions.get('window').width}
             source={{ uri: `https://${this.props.event.coverImage.s3Bucket}.s3.amazonaws.com/${this.props.event.coverImage.s3Key}` }}
           />
@@ -76,14 +78,32 @@ class ClubEvent extends Component {
           <Text style={styles.body}>
             {this.props.event.description}
           </Text>
-          {this.props.event.url && this.props.event.url.length > 0 ? (
+          {/* {
+            Linking.canOpenURL(this.props.event.url).then(supported => {
+              if (supported) {
+                return (
+                  <Text 
+                    style={[styles.body, styles.blue]} 
+                    onPress={() => Linking.openURL(this.props.event.url)}
+                  > 
+                    Watch it here!
+                  </Text>
+                )
+              } else {
+                console.log('Invalid url')
+              }
+            })
+            .catch(err => console.error('An error occurred', err))
+          }
+          {this.props.event.url && this.props.event.url.length > 0 
+            && Linking.canOpenURL(this.props.event.url).then ? (
             <Text 
               style={[styles.body, styles.blue]} 
               onPress={() => Linking.openURL(this.props.event.url)}
             >
               Watch it here!
             </Text>
-            ) : null}
+            ) : null} */}
         </View>
       </ScrollView>
     );

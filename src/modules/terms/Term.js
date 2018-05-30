@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import AutoHeightImage from 'react-native-auto-height-image';
 import {
+  Dimensions,
   KeyboardAvoidingView,
   Text,
   ScrollView,
@@ -88,12 +90,18 @@ class Term extends Component {
         id: this.props.term._id,
       }
     });
+    console.log(`this.props.term.coverImage: ${JSON.stringify(this.props.term.coverImage, null, 4)}`);
     return (
       <KeyboardAwareScrollView 
         enableResetScrollToCoords={false} 
         extraScrollHeight={20}
       >
-        <Image style={styles.image} source={{uri: 'http://3.bp.blogspot.com/-oulaC4PV0sw/V1Y4OskA1yI/AAAAAAAAb20/_clCVq9Y7DsvpM7CQU6PBJCTwC9D-VEsQCK4B/s1600/synapse.jpg'}}/>
+        {this.props.term.coverImage && this.props.term.coverImage.s3Key ? (
+          <Image style={styles.image}
+            source={{ uri: `https://${this.props.term.coverImage.s3Bucket}.s3.amazonaws.com/${this.props.term.coverImage.s3Key}` }}
+          />
+        ) : null}
+        {/* <Image style={styles.image} source={{uri: 'http://3.bp.blogspot.com/-oulaC4PV0sw/V1Y4OskA1yI/AAAAAAAAb20/_clCVq9Y7DsvpM7CQU6PBJCTwC9D-VEsQCK4B/s1600/synapse.jpg'}}/> */}
         <View style={styles.container}>
           <Text style={styles.title}>{this.props.term.term}</Text>
           <View>

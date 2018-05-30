@@ -52,6 +52,7 @@ class ArticleView extends Component {
           {this.props.content.coverImage ? (
             <AutoHeightImage
               width={Dimensions.get('window').width}
+              style={styles.image}
               source={{ uri: `https://${this.props.content.coverImage.s3Bucket}.s3.amazonaws.com/${this.props.content.coverImage.s3Key}` }}
             />
           ) : null}
@@ -64,13 +65,13 @@ class ArticleView extends Component {
                 <Text>AUTHOR</Text>
                 {
                   this.props.content.creators && this.props.content.creators.map((creator) => (
-                    <Link
-                      to={`/creatorProfile/${creator._id}`}
-                      underlayColor='white'
-                      key={creator._id}
-                    >
-                      <Text style={styles.blue}>{creator.name}</Text>
-                    </Link>
+                    // <Link
+                    //   to={`/creatorProfile/${creator._id}`}
+                    //   underlayColor='white'
+                    //   key={creator._id}
+                    // >
+                      <Text key={creator._id} style={styles.blue}>{creator.name}</Text>
+                    // </Link>
                   ))
                 }
               </View>
@@ -79,13 +80,13 @@ class ArticleView extends Component {
                 {
                   this.props.content.coverImage 
                   && this.props.content.coverImage.artists.map((artist) => (
-                    <Link
-                      to={`/creatorProfile/${artist._id}`}
-                      underlayColor='white'
-                      key={artist._id}
-                    >
-                      <Text style={styles.blue}>{artist.name}</Text>
-                    </Link>
+                    // <Link
+                    //   to={`/creatorProfile/${artist._id}`}
+                    //   underlayColor='white'
+                    //   key={artist._id}
+                    // >
+                      <Text key={artist._id} style={styles.blue}>{artist.name}</Text>
+                    // </Link>
                   ))
                 }
               </View>

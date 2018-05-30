@@ -5,8 +5,7 @@ import {
 
 const styles = StyleSheet.create({
   image: {
-    alignSelf: 'stretch',
-		height: Dimensions.get('window').height/3,
+    maxHeight: Dimensions.get('window').height - 150,
   },
   container: {
     paddingTop: 15,

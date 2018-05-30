@@ -63,13 +63,13 @@ class Video extends Component {
               <Text>AUTHOR</Text>
               {
                 this.props.content.creators && this.props.content.creators.map((creator) => (
-                  <Link
-                    to={`/creatorProfile/${creator._id}`}
-                    underlayColor='white'
-                    key={creator._id}
-                  >
-                    <Text style={styles.blue}>{creator.name}</Text>
-                  </Link>
+                  // <Link
+                  //   to={`/creatorProfile/${creator._id}`}
+                  //   underlayColor='white'
+                  //   key={creator._id}
+                  // >
+                    <Text key={creator._id} style={styles.blue}>{creator.name}</Text>
+                  // </Link>
                 ))
               }
             </View>

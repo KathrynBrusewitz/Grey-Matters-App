@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
 	image: {
 		alignSelf: 'stretch',
-		height: 300
+		height: 300,
 	},
 	title: {
 		fontSize: 25, 

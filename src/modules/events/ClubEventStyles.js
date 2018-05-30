@@ -1,4 +1,5 @@
 import {
+  Dimensions,
   StyleSheet,
 } from 'react-native';
 
@@ -7,8 +8,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   image: {
-    flex: 3,
-    alignSelf: 'stretch',
+    maxHeight: Dimensions.get('window').height - 150,
   },
   mainContainer: {
     padding: 20,
@@ -71,7 +71,13 @@ const styles = StyleSheet.create({
   },
   blue: {
     color: '#1ba5b8',
-  }
+  },
+  invisible: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  },
 })
 
 export default styles;
