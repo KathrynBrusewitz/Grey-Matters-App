@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 	},
   story: {
-    marginTop: Dimensions.get('window').height / 2,
+    paddingTop: Dimensions.get('window').height / 2,
   }
 })
 
