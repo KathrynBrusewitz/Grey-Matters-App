@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Icon } from 'react-native-elements';
+import { PageControl } from 'react-native-ui-lib';
 import {
   Dimensions,
   Image,
@@ -11,6 +11,7 @@ import {
   View,
 } from 'react-native';
 import { learningActions } from '../../actions';
+import { colors } from '../../constants';
 import Loading from '../shared/Loading';
 import pages from './LearningSectionPages';
 import styles from './LearningSectionStyles';
@@ -55,15 +56,11 @@ class LearningSection extends Component {
             this.props.updateBaseImage(this.props.topImageIndex)
           }}
         />
-        {/* <View style={{marginTop: Dimensions.get('window').height / 2, justifyContent: 'space-between', alignSelf: 'stretch'}}>
-          <Icon name='chevron-left' color='#282828' containerStyle={{flex: 1}}/>
-          <Icon name='chevron-right' color='#282828' containerStyle={{flex: 1}} />
-        </View> */}
         <ScrollView
           style={styles.story}
           pagingEnabled={true}
           horizontal={true}
-          showsHorizontalScrollIndicator={true}
+          showsHorizontalScrollIndicator={false}
           onMomentumScrollEnd={(e) => this.onScrollEnd(e)}
           ref='_scrollView'
         >
@@ -78,6 +75,11 @@ class LearningSection extends Component {
             ))
           }
         </ScrollView>
+        <PageControl
+          containerStyle={{position: 'absolute', bottom: 0, left: 0, right: 0}}
+          numOfPages={pages.length}
+          currentPage={this.props.topImageIndex}
+          color={colors.lightGrey} />
       </View>
     );
   }

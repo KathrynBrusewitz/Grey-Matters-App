@@ -3,11 +3,12 @@ import {
   Dimensions,
   StyleSheet,
 } from 'react-native';
+import { colors } from '../../constants';
 
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height,
+    height: Dimensions.get('window').height - 90, //account for header
   },
   page: {
     width: Dimensions.get('window').width,
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
 	},
   story: {
     paddingTop: Dimensions.get('window').height / 2,
-  }
+  },
 })
 
 export default styles;
