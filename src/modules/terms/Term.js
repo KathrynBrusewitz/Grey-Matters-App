@@ -79,7 +79,14 @@ class Term extends Component {
         }
       }
     }
-    
+    analytics.page({
+      anonymousId: '0',
+      category: 'Terms',
+      name: this.props.term.term,
+      properties: {
+        id: this.props.term._id,
+      }
+    });
     return (
       <KeyboardAwareScrollView 
         enableResetScrollToCoords={false} 

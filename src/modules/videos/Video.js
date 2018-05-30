@@ -43,6 +43,9 @@ class Video extends Component {
       anonymousId: '0',
       category: 'Videos',
       name: this.props.content.title,
+      properties: {
+        id: this.props.content._id,
+      }
     });
     return (
       <View>

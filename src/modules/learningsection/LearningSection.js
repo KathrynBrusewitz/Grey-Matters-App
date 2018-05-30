@@ -43,6 +43,11 @@ class LearningSection extends Component {
         <Loading />
       )
     }
+    analytics.page({
+      anonymousId: '0',
+      category: 'Learning Section',
+      name: 'Learning Section',
+    });
     return (
       <View style={styles.container}>
         <Image

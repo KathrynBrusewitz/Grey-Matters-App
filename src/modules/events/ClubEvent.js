@@ -37,6 +37,9 @@ class ClubEvent extends Component {
       anonymousId: '0',
       category: 'Events',
       name: this.props.event.title,
+      properties: {
+        id: this.props.event._id,
+      }
     });
     return (
       <View style={styles.container}>

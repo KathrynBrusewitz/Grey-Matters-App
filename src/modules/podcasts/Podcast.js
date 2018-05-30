@@ -43,6 +43,9 @@ class Podcast extends Component {
       anonymousId: '0',
       category: 'Podcasts',
       name: this.props.content.title,
+      properties: {
+        id: this.props.content._id,
+      }
     });
     return (
       <ScrollView>

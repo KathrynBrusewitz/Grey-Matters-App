@@ -5,7 +5,7 @@ import AutoHeightImage from 'react-native-auto-height-image';
 import ParsedText from 'react-native-parsed-text';
 import { Link } from 'react-router-native';
 import {
-	Dimensions,
+  Dimensions,
   Text,
   ScrollView,
   View,
@@ -18,11 +18,11 @@ import References from '../shared/References';
 import TermDialog from './TermDialog';
 
 class ArticleView extends Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
   }
 
-	handleTermPress(term) {
+  handleTermPress(term) {
     let pattern = /<span>([\w\s]+)<\/span>/;
     let match = term.match(pattern);
     this.props.getTerms({ term: match[1] });
@@ -32,21 +32,29 @@ class ArticleView extends Component {
     return `${matches[1]}`;
   }
 
-	render() {
+  render() {
     let references = [
-      {number: 1, citation: 'Marrocco, S. (2017, April 28). ‘Big’ John McCarthy says weight-cutting more dangerous than PEDs in MMA. MMAJunkie.com.'},
-      {number: 2, citation: 'Martin, D. (2014, February 18). Daniel Cormier remembers the weight cut that almost killed him. FoxSports.com'},
-      {number: 3, citation: 'Ting, L. et al. (2016). Brain Formaldehyde is Related to Water Intake Behavior. Aging and Disease, 7(5), 561-584.'},
+      { number: 1, citation: 'Marrocco, S. (2017, April 28). ‘Big’ John McCarthy says weight-cutting more dangerous than PEDs in MMA. MMAJunkie.com.' },
+      { number: 2, citation: 'Martin, D. (2014, February 18). Daniel Cormier remembers the weight cut that almost killed him. FoxSports.com' },
+      { number: 3, citation: 'Ting, L. et al. (2016). Brain Formaldehyde is Related to Water Intake Behavior. Aging and Disease, 7(5), 561-584.' },
     ];
     analytics.page({
       anonymousId: '0',
       category: 'Articles',
       name: this.props.content.title,
+      properties: {
+        id: this.props.content._id,
+      }
     });
     return (
       <View>
         <ScrollView>
-          <AutoHeightImage width={Dimensions.get('window').width} source={{uri: 'http://greymattersjournal.com/wp-content/uploads/2018/01/HM-700x757.png'}}/>
+          {this.props.content.coverImage ? (
+            <AutoHeightImage
+              width={Dimensions.get('window').width}
+              source={{ uri: `https://${this.props.content.coverImage.s3Bucket}.s3.amazonaws.com/${this.props.content.coverImage.s3Key}` }}
+            />
+          ) : null}
           <View style={styles.container}>
             <Text style={styles.titleText}>
               {this.props.content.title}
@@ -69,7 +77,8 @@ class ArticleView extends Component {
               <View style={[styles.artist]}>
                 <Text>ARTIST</Text>
                 {
-                  this.props.content.artists && this.props.content.artists.map((artist) => (
+                  this.props.content.coverImage 
+                  && this.props.content.coverImage.artists.map((artist) => (
                     <Link
                       to={`/creatorProfile/${artist._id}`}
                       underlayColor='white'
@@ -81,27 +90,27 @@ class ArticleView extends Component {
                 }
               </View>
               <View style={[styles.date]}>
-                <Text>{ new Date(this.props.content.publishTime).toLocaleDateString()}</Text>
+                <Text>{new Date(this.props.content.publishTime).toLocaleDateString()}</Text>
               </View>
             </View>
             <ParsedText
               style={styles.body}
               parse={
                 [
-                  {pattern: /<h2>([\S\s]+)<\/h2>/, style: styles.sectionTitle, renderText: this.renderText},
-                  {pattern: /<span>([\w\s]+)<\/span>/, style: styles.blue, onPress: (term) => this.handleTermPress(term), renderText: this.renderText},
+                  { pattern: /<h2>([\S\s]+)<\/h2>/, style: styles.sectionTitle, renderText: this.renderText },
+                  { pattern: /<span>([\w\s]+)<\/span>/, style: styles.blue, onPress: (term) => this.handleTermPress(term), renderText: this.renderText },
                 ]
               }
             >
               {this.props.content.body}
             </ParsedText>
-            {references && <References references={references}/>}
+            {references && <References references={references} />}
           </View>
         </ScrollView>
         {this.props.terms && <TermDialog terms={this.props.terms} />}
       </View>
     );
-	}
+  }
 }
 
 const mapStateToProps = state => ({
@@ -114,4 +123,3 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleView);
-  
