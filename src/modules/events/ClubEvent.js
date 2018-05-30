@@ -6,10 +6,8 @@ import {
   Text,
   View,
   Image,
-  StyleSheet,
 } from 'react-native';
 import styles from './ClubEventStyles';
-import { Button } from 'react-native-elements';
 import { eventsActions } from '../../actions';
 import { analytics } from '../../store';
 import Loading from '../shared/Loading';

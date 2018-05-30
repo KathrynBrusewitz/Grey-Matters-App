@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     borderTopWidth: StyleSheet.hairlineWidth,
   },
   profileNavItem: {
-    flex: 7,
+    flex: 6,
     justifyContent: 'space-around',
     alignItems: 'center',
     padding: 10,

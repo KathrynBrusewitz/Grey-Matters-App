@@ -7,7 +7,7 @@ import {
 	Text,
 	View,
 } from 'react-native';
-import { Avatar, Header } from 'react-native-elements';
+import { Avatar, Button } from 'react-native-elements';
 import ContentFeed from '../shared/ContentFeed';
 import styles from './ProfileStyles';
 import { profileActions } from '../../actions';
