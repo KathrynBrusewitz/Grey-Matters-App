@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ff404e',
   },
   referenceHeader: {
-    fontSize: 17,
+    fontSize: 19,
     fontWeight: 'bold',
     paddingTop: 20,
   },

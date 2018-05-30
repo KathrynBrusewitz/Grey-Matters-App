@@ -1,6 +1,17 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../constants';
 
 const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		paddingTop: 75,
+	},
+	suggestionHeader: {
+		color: colors.darkGrey,
+		fontSize: 17,
+		textAlign: 'center',
+		padding: 20,
+	},
 	suggestion: {
 		color: '#1ba5b8',
 		textAlign: 'center',

@@ -65,10 +65,12 @@ class ClubEvent extends Component {
               <Text style={styles.blue}>{this.props.event.location}</Text>
             </View>
           </View>
-          <Text style={styles.description}>{this.props.event.description}</Text>
-          {this.props.event.url ? (
+          <Text style={styles.body}>
+            {this.props.event.description}
+          </Text>
+          {this.props.event.url && this.props.event.url.length > 0 ? (
             <Text 
-              style={styles.blue} 
+              style={[styles.body, styles.blue]} 
               onPress={() => Linking.openURL(this.props.event.url)}
             >
               Watch it here!

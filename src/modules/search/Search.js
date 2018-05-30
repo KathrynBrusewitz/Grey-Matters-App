@@ -29,7 +29,12 @@ class Search extends Component {
       )
     }
     return (
-      <View>
+      <View style={styles.container}>
+        <Text 
+          style={styles.suggestionHeader}
+        >
+          Suggested
+        </Text>
         <Text 
           style={styles.suggestion}
           onPress={() => this.props.getSearch({ q: 'Computers'})}

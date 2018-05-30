@@ -90,7 +90,7 @@ class Podcast extends Component {
               <Text>{new Date(this.props.content.publishTime).toLocaleDateString()}</Text>
             </View>
           </View>
-          <Text>{this.props.content.body}</Text>
+          <Text style={styles.body}>{this.props.content.body}</Text>
           {this.props.content.references && <References references={this.props.content.references} />}
         </View>
       </ScrollView>

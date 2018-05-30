@@ -74,8 +74,10 @@ class Video extends Component {
               <Text>{new Date(this.props.content.publishTime).toLocaleDateString()}</Text>
             </View>
           </View>
-          <Text>{this.props.content.body}</Text>
-          {this.props.content.references && <References references={this.props.content.references}/>}
+          <Text style={styles.body}>{this.props.content.body}</Text>
+          {this.props.content.references 
+            && this.props.content.references.length > 0
+            && <References references={this.props.content.references}/>}
         </View>
       </View>
     );

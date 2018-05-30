@@ -67,9 +67,9 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   body: {
-    lineHeight: 30,
-    fontSize: 17,
-  }
+    lineHeight: 25,
+    fontSize: 16,
+  },
 })
 
 export default styles;

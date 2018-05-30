@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   date: {
-    flex: 3,
+    flex: 1,
     marginTop: 10,
     marginBottom: 10,
     borderRightColor: '#ff404e',
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   time: {
-    flex: 3,
+    flex: 1,
     marginTop: 10,
     marginBottom: 10,
     borderRightColor: '#ff404e',
@@ -46,10 +46,11 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   location: {
-    flex: 2,
+    flex: 1,
     marginTop: 10,
     marginBottom: 10,
-    alignItems: 'flex-end',
+    alignItems: 'flex-start',
+    paddingLeft: 10,
   },
   button: { 
     backgroundColor: '#1ba5b8',
@@ -61,8 +62,9 @@ const styles = StyleSheet.create({
   buttonTitle: {
     color: 'white',
   },
-  description: {
-    paddingBottom: 20,
+  body: {
+    lineHeight: 25,
+    fontSize: 16,
   },
   bold: {
     fontWeight: 'bold',
