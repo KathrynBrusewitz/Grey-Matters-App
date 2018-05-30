@@ -13,6 +13,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     alignItems: 'center',
   },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    width: Dimensions.get('window').width,
+  },
   nav: {
     position: 'absolute',
     top: 0,

@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { learningActions } from '../../actions';
 import { colors } from '../../constants';
+import { analytics } from '../../store';
 import Loading from '../shared/Loading';
 import pages from './LearningSectionPages';
 import styles from './LearningSectionStyles';

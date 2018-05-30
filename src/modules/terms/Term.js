@@ -15,6 +15,7 @@ import Loading from '../shared/Loading';
 import Unavailable from '../shared/Unavailable';
 import { termsActions } from '../../actions';
 import { userActions } from '../../actions';
+import { analytics } from '../../store';
 import styles from './TermStyles';
 
 class Term extends Component {

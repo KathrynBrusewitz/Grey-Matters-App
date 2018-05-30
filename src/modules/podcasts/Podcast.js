@@ -94,7 +94,9 @@ class Podcast extends Component {
             </View>
           </View>
           <Text style={styles.body}>{this.props.content.body}</Text>
-          {this.props.content.references && <References references={this.props.content.references} />}
+          {this.props.content.references 
+            && this.props.content.references.length > 0
+            && <References references={this.props.content.references} />}
         </View>
       </ScrollView>
     );
