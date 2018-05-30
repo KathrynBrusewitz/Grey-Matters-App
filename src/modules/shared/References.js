@@ -16,7 +16,7 @@ const References = (props) => {
 			{
 				props.references.map(reference => (
 					<View key={reference.number} style={styles.reference}>
-						<Text style={styles.number}>{reference.number}</Text>
+						<Text style={styles.number}>{reference.number}.</Text>
 						<Text style={styles.citation}>{reference.citation}</Text>
 					</View>
 				))

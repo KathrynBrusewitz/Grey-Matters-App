@@ -36,7 +36,16 @@ const styles = StyleSheet.create({
 	bio: {
 		width: Dimensions.get('window').width - 120,
 		marginBottom: 30,
-	}
+	},
+	signup: {
+		fontSize: 20,
+		paddingTop: 10,
+		paddingBottom: 10,
+		// textDecorationLine: 'underline',
+	},
+	blue: {
+    color: '#1ba5b8',
+	},
 })
 
 export default styles;

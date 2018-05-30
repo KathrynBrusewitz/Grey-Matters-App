@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-native';
 import {
 	ScrollView,
 	Text,
@@ -64,7 +65,9 @@ class UserProfile extends Component {
 									icon={{name: 'person'}}
 									containerStyle={{ marginBottom: 15}}
 								/>
-								<Text>Sign up under settings to unlock bookmarks</Text>
+								<Link to="/signup" underlayColor='white'>
+									<Text style={[styles.signup]}>Sign Up</Text>
+								</Link>
 							</View>
 						)
 					}
