@@ -38,7 +38,7 @@ class Notes extends Component {
 						return (
 						<Link 
 							to={`/terms/${item.term._id}`} 
-							key={item.term} 
+							key={item._id} 
 							underlayColor={colors.lightGrey}
 						>
 							<View style={styles.box}>

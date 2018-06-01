@@ -7,9 +7,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  image: {
-    maxHeight: Dimensions.get('window').height - 150,
-  },
+	image: {
+		alignSelf: 'stretch',
+		height: 300,
+	},
   mainContainer: {
     padding: 20,
     flex: 5,

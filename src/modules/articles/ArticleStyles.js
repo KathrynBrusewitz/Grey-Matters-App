@@ -7,6 +7,10 @@ const styles = StyleSheet.create({
   image: {
     maxHeight: Dimensions.get('window').height - 150,
   },
+  podcastContainer: {
+    width: Dimensions.get('window').width,
+    height: 300,
+  },
   container: {
     paddingTop: 15,
     paddingLeft: 20,

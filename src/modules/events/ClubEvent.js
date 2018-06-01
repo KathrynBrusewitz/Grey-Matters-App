@@ -43,13 +43,12 @@ class ClubEvent extends Component {
         id: this.props.event._id,
       }
     });
-
+    console.log(this.props.event.coverImage);
     return (
       <ScrollView style={styles.container}>
         {this.props.event.coverImage ? (
-          <AutoHeightImage
+          <Image
             style={styles.image}
-            width={Dimensions.get('window').width}
             source={{ uri: `https://${this.props.event.coverImage.s3Bucket}.s3.amazonaws.com/${this.props.event.coverImage.s3Key}` }}
           />
         ) : null}

@@ -36,7 +36,7 @@ class Podcast extends Component {
 
     if (!this.props.content || !this.props.content.url) {
       return (
-        <Unavailable message='Podcast currently unavailable' />
+        <Loading />
       );
     }
     analytics.page({
@@ -49,7 +49,7 @@ class Podcast extends Component {
     });
     return (
       <ScrollView>
-        <View style={styles.image}>
+        <View style={styles.podcastContainer}>
           <WebView
             javaScriptEnabled={true}
             domStorageEnabled={true}
