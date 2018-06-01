@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import {
   View,
   Text,
+  ScrollView
 } from 'react-native';
 
 import { Link } from 'react-router-native';

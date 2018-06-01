@@ -6,6 +6,9 @@ import thunk from "redux-thunk";
 import { createMemoryHistory } from 'history';
 import { routerMiddleware } from 'react-router-redux';
 import rootReducer from './reducers'; //Import the reducer
+import Analytics from 'analytics-react-native';
+
+export const analytics = new Analytics('trMds4w0XTPk7V8o7QMJh1uqqbm34YS1');
 
 const persistConfig = {
 	key: 'root',

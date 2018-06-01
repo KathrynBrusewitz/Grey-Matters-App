@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import AutoHeightImage from 'react-native-auto-height-image';
 import {
+  Linking,
+  ScrollView,
   Text,
   View,
   Image,
-  StyleSheet,
 } from 'react-native';
 import styles from './ClubEventStyles';
-import { Button } from 'react-native-elements';
 import { eventsActions } from '../../actions';
+import { analytics } from '../../store';
 import Loading from '../shared/Loading';
 import Unavailable from '../shared/Unavailable';
 
@@ -33,10 +35,27 @@ class ClubEvent extends Component {
         <Unavailable message='Event unvailable' />
       )
     }
+    analytics.page({
+      anonymousId: '0',
+      category: 'Events',
+      name: this.props.event.title,
+      properties: {
+        id: this.props.event._id,
+      }
+    });
+    console.log(this.props.event.coverImage);
     return (
-      <View style={styles.container}>
-        <Image source={{uri: 'https://scontent.fsnc1-1.fna.fbcdn.net/v/t1.0-1/p200x200/29066536_796994107154965_7780716167616548386_n.jpg?_nc_cat=0&_nc_eui2=v1%3AAeHWwaX32bz-DEHRzw0vv0wbFJprwtnzLT9roboXnJODnrVgSRWySeLSxtZDdNJd4Fa3zp5DxOZz65kMkg7GxC21sPOS2E02FlqljeeFzb0rXg&oh=795833525dc92eb95dd79c5b9ce7eca2&oe=5B5727D4'}} style={styles.image}/>
+      <ScrollView style={styles.container}>
+        {this.props.event.coverImage ? (
+          <Image
+            style={styles.image}
+            source={{ uri: `https://${this.props.event.coverImage.s3Bucket}.s3.amazonaws.com/${this.props.event.coverImage.s3Key}` }}
+          />
+        ) : null}
         <View style={styles.mainContainer}>
+          <Text style={styles.titleText}>
+            {this.props.event.title}
+          </Text>
           <View style={styles.metaData}>
             <View style={[styles.date]}>
               <Text>{"DATE"}</Text>
@@ -55,9 +74,37 @@ class ClubEvent extends Component {
               <Text style={styles.blue}>{this.props.event.location}</Text>
             </View>
           </View>
-          <Text style={styles.description}>{this.props.event.description}</Text>
+          <Text style={styles.body}>
+            {this.props.event.description}
+          </Text>
+          {/* {
+            Linking.canOpenURL(this.props.event.url).then(supported => {
+              if (supported) {
+                return (
+                  <Text 
+                    style={[styles.body, styles.blue]} 
+                    onPress={() => Linking.openURL(this.props.event.url)}
+                  > 
+                    Watch it here!
+                  </Text>
+                )
+              } else {
+                console.log('Invalid url')
+              }
+            })
+            .catch(err => console.error('An error occurred', err))
+          }
+          {this.props.event.url && this.props.event.url.length > 0 
+            && Linking.canOpenURL(this.props.event.url).then ? (
+            <Text 
+              style={[styles.body, styles.blue]} 
+              onPress={() => Linking.openURL(this.props.event.url)}
+            >
+              Watch it here!
+            </Text>
+            ) : null} */}
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }

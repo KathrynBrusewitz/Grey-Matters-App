@@ -100,7 +100,7 @@ class Signup extends Component {
         />
         <Link to="/login" underlayColor={'white'}>
           <Text style={{ textAlign: 'center' }}>
-            Already a Member? <Text style={{ textDecorationLine: 'underline' }}>login</Text>
+            Already a Member? <Text style={styles.blue}>login</Text>
           </Text>
         </Link>
         {this.props.message && <Text style={[styles.formMessage, styles.red]}>{this.props.message}</Text>}

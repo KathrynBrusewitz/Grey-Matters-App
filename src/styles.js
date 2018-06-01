@@ -13,6 +13,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     alignItems: 'center',
   },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    width: Dimensions.get('window').width,
+  },
   nav: {
     position: 'absolute',
     top: 0,
@@ -32,7 +39,7 @@ const styles = StyleSheet.create({
     borderTopWidth: StyleSheet.hairlineWidth,
   },
   profileNavItem: {
-    flex: 7,
+    flex: 6,
     justifyContent: 'space-around',
     alignItems: 'center',
     padding: 10,

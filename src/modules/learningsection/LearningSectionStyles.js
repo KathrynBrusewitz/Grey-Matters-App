@@ -3,15 +3,19 @@ import {
   Dimensions,
   StyleSheet,
 } from 'react-native';
+import { colors } from '../../constants';
 
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height,
+    height: Dimensions.get('window').height - 90, //account for header
   },
   page: {
     width: Dimensions.get('window').width,
     padding: 20,
+  },
+  pageText: {
+    paddingTop: 10,
     fontSize: 17,
   },
   image: {
@@ -26,9 +30,17 @@ const styles = StyleSheet.create({
   visible: {
     opacity: 1,
   },
+  sectionHeaderBox: {
+		paddingBottom: 2,
+		borderBottomWidth: 1,
+	},
+	sectionHeader: {
+		fontSize: 20, 
+		fontWeight: 'bold',
+	},
   story: {
-    marginTop: Dimensions.get('window').height / 2,
-  }
+    paddingTop: Dimensions.get('window').height / 2,
+  },
 })
 
 export default styles;

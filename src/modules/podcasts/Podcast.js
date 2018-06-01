@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import styles from '../articles/ArticleStyles';
 import { contentActions } from '../../actions';
+import { analytics } from '../../store';
 import Loading from '../shared/Loading';
 import Unavailable from '../shared/Unavailable';
 import References from '../shared/References';
@@ -35,13 +36,20 @@ class Podcast extends Component {
 
     if (!this.props.content || !this.props.content.url) {
       return (
-        <Unavailable message='Podcast currently unavailable' />
+        <Loading />
       );
     }
-
+    analytics.page({
+      anonymousId: '0',
+      category: 'Podcasts',
+      name: this.props.content.title,
+      properties: {
+        id: this.props.content._id,
+      }
+    });
     return (
       <ScrollView>
-        <View style={styles.image}>
+        <View style={styles.podcastContainer}>
           <WebView
             javaScriptEnabled={true}
             domStorageEnabled={true}
@@ -57,13 +65,13 @@ class Podcast extends Component {
               <Text>{creatorTitles[this.props.content.type].toUpperCase()}</Text>
               {
                   this.props.content.creators && this.props.content.creators.map((creator) => (
-                    <Link
-                      to={`/creatorProfile/${creator._id}`}
-                      underlayColor='white'
-                      key={creator._id}
-                    >
-                      <Text style={styles.blue}>{creator.name}</Text>
-                    </Link>
+                    // <Link
+                    //   to={`/creatorProfile/${creator._id}`}
+                    //   underlayColor='white'
+                    //   key={creator._id}
+                    // >
+                      <Text key={creator._id} style={styles.blue}>{creator.name}</Text>
+                    // </Link>
                   ))
                 }
             </View>
@@ -71,13 +79,13 @@ class Podcast extends Component {
               <Text>ARTIST</Text>
               {
                 this.props.content.artists && this.props.content.artists.map((artist) => (
-                  <Link
-                    to={`/creatorProfile/${artist._id}`}
-                    underlayColor='white'
-                    key={artist._id}
-                  >
-                    <Text style={styles.blue}>{artist.name}</Text>
-                  </Link>
+                  // <Link
+                  //   to={`/creatorProfile/${artist._id}`}
+                  //   underlayColor='white'
+                  //   key={artist._id}
+                  // >
+                    <Text key={artist._id} style={styles.blue}>{artist.name}</Text>
+                  // </Link>
                 ))
               }
             </View>
@@ -85,8 +93,10 @@ class Podcast extends Component {
               <Text>{new Date(this.props.content.publishTime).toLocaleDateString()}</Text>
             </View>
           </View>
-          <Text>{this.props.content.body}</Text>
-          {this.props.content.references && <References references={this.props.content.references} />}
+          <Text style={styles.body}>{this.props.content.body}</Text>
+          {this.props.content.references 
+            && this.props.content.references.length > 0
+            && <References references={this.props.content.references} />}
         </View>
       </ScrollView>
     );

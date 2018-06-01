@@ -67,7 +67,6 @@ export const userReducer = (state = USER_INITIAL, action) => {
     case userConstants.BASIC_LOGIN_FAILURE:
       return {
         ...state,
-        user: null,
         isBasicLoggingIn: false,
       };
     case userConstants.LOGIN_REQUEST:
@@ -86,7 +85,6 @@ export const userReducer = (state = USER_INITIAL, action) => {
     case userConstants.LOGIN_FAILURE:
       return {
         ...state,
-        user: null,
         message: action.message,
         isLoggingIn: false,
       };
@@ -107,11 +105,6 @@ export const userReducer = (state = USER_INITIAL, action) => {
         ...state,
         message: action.message,
         isSigningUp: false,
-      };
-    case userConstants.LOGOUT:
-      return {
-        ...state,
-        user: null,
       };
     case userConstants.RESET_LINK_SUCCESS:
       return {

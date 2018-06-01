@@ -5,8 +5,11 @@ import {
 
 const styles = StyleSheet.create({
   image: {
-    alignSelf: 'stretch',
-		height: Dimensions.get('window').height/3,
+    maxHeight: Dimensions.get('window').height - 150,
+  },
+  podcastContainer: {
+    width: Dimensions.get('window').width,
+    height: 300,
   },
   container: {
     paddingTop: 15,
@@ -67,9 +70,9 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   body: {
-    lineHeight: 30,
-    fontSize: 17,
-  }
+    lineHeight: 25,
+    fontSize: 16,
+  },
 })
 
 export default styles;

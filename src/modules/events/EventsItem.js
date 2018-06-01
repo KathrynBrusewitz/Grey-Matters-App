@@ -3,7 +3,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Icon } from 'react-native-elements';
 import { Link } from 'react-router-native';
 import styles from './EventsItemStyles';
 import { colors } from '../../constants';

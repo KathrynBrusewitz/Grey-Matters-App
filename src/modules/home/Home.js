@@ -25,37 +25,35 @@ class Home extends Component {
 
   componentDidMount() {
 		this.props.clearTerms();
-    this.props.getContents({ type: 'article', state: 'published' });
+    this.props.getContent('5afea37c176b931754e35142');
 	}
 
   render() {
-    if (this.props.isGettingContents) {
+    if (this.props.isGettingContent) {
       return (
         <Loading />
       );
 		}
 		
-    if (!this.props.contents || this.props.contents.length == 0) {
+    if (!this.props.content || this.props.content.length == 0) {
       return (
 				<Unavailable message='Content unavailable' />
       );
-		}
-    this.props.contents.sort((content1, content2) => {
-      return content1.publishTime - content2.publishTime;
-    });
+    }
+    
     return (
-			<ArticleView content={this.props.contents[0]} /> 
+			<ArticleView content={this.props.content} /> 
     );
   }
 }
 
 const mapStateToProps = state => ({
-  contents: state.content.contents,
-	isGettingContents: state.content.isGettingContents,
+  content: state.content.content,
+	isGettingContent: state.content.isGettingContent,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-	getContents: contentActions.getContents,
+	getContent: contentActions.getContent,
   clearTerms: termsActions.clearTerms,
 }, dispatch);
 

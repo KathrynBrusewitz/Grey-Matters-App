@@ -14,7 +14,8 @@ import BookmarkIcon from './BookmarkIcon';
 const ContentFeed = (props) => (
   <View style={[styles.content]}>
   {
-    props.list ? props.list.map((item) => (
+    props.list ? props.list.map((item) => {
+      return (
       <Link 
         to={`/${item.type}s/${item._id}`} 
         key={item._id} 
@@ -22,9 +23,12 @@ const ContentFeed = (props) => (
         underlayColor={colors.lightGrey}
       >
         <View style={styles.contentListItem}>
-          <Image style={styles.image} 
-                source={{uri: 'https://is2-ssl.mzstatic.com/image/thumb/Purple60/v4/98/53/cc/9853cc2f-4b7a-8fd0-a7f8-5c6902e94ae8/source/256x256bb.jpg'}}
+        {item.coverImage ? (
+          <Image 
+            style={styles.image} 
+            source={{ uri: `https://${item.coverImage.s3Bucket}.s3.amazonaws.com/${item.coverImage.s3Key}` }}
           />
+        ) : null}
           <View style={styles.informationBox}>
             <View style={styles.titleContainer}>
               <Text style={styles.titleText}>
@@ -50,7 +54,7 @@ const ContentFeed = (props) => (
           </View>
         </View>
       </Link>
-    )) : null
+    )}) : null
   }
   </View>
 )
