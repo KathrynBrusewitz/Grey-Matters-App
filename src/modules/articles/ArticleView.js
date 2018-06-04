@@ -115,7 +115,7 @@ class ArticleView extends Component {
             <HTMLView
               value={this.props.content.bodyHtml}
               stylesheet={styles}
-              onLinkPress={(url) => console.log('clicked link: ', url)}
+              onLinkPress={(url) => this.handleLinkPress(url)}
               renderNode={this.renderNode}
             />
             {references && <References references={references} />}
