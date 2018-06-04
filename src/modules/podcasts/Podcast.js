@@ -12,6 +12,7 @@ import {
 import styles from '../articles/ArticleStyles';
 import { contentActions } from '../../actions';
 import { analytics } from '../../store';
+import { uuid } from '../../constants';
 import Loading from '../shared/Loading';
 import Unavailable from '../shared/Unavailable';
 import References from '../shared/References';
@@ -40,7 +41,7 @@ class Podcast extends Component {
       );
     }
     analytics.page({
-      anonymousId: '0',
+      anonymousId: uuid,
       category: 'Podcasts',
       name: this.props.content.title,
       properties: {

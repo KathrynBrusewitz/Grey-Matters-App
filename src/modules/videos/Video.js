@@ -15,6 +15,7 @@ import Loading from '../shared/Loading';
 import Unavailable from '../shared/Unavailable';
 import { contentActions } from '../../actions';
 import { analytics } from '../../store';
+import { uuid } from '../../constants';
 import styles from '../articles/ArticleStyles';
 import References from '../shared/References';
 
@@ -40,7 +41,7 @@ class Video extends Component {
       );
     }
     analytics.page({
-      anonymousId: '0',
+      anonymousId: uuid,
       category: 'Videos',
       name: this.props.content.title,
       properties: {

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import AutoHeightImage from 'react-native-auto-height-image';
-import ParsedText from 'react-native-parsed-text';
 import HTMLView from 'react-native-htmlview';
 import { Link } from 'react-router-native';
 import {
@@ -14,6 +13,7 @@ import {
 } from 'react-native';
 import { termsActions } from '../../actions';
 import { analytics } from '../../store';
+import { uuid } from '../../constants';
 import styles from './ArticleStyles';
 import References from '../shared/References';
 import TermDialog from './TermDialog';
@@ -57,7 +57,7 @@ class ArticleView extends Component {
       { number: 3, citation: 'Ting, L. et al. (2016). Brain Formaldehyde is Related to Water Intake Behavior. Aging and Disease, 7(5), 561-584.' },
     ];
     analytics.page({
-      anonymousId: '0',
+      anonymousId: uuid,
       category: 'Articles',
       name: this.props.content.title,
       properties: {

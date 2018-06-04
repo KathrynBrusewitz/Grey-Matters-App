@@ -13,6 +13,7 @@ import {
 import { learningActions } from '../../actions';
 import { colors } from '../../constants';
 import { analytics } from '../../store';
+import { uuid } from '../../constants';
 import Loading from '../shared/Loading';
 import pages from './LearningSectionPages';
 import styles from './LearningSectionStyles';
@@ -45,7 +46,7 @@ class LearningSection extends Component {
       )
     }
     analytics.page({
-      anonymousId: '0',
+      anonymousId: uuid,
       category: 'Learning Section',
       name: 'Learning Section',
     });

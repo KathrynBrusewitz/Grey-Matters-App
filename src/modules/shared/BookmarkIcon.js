@@ -8,6 +8,7 @@ import {
 import { Icon } from 'react-native-elements';
 import { userActions } from '../../actions';
 import { analytics } from '../../store';
+import { uuid } from '../../constants';
 import styles from './ContentFeedStyles';
 
 class BookmarkIcon extends React.Component {
@@ -27,7 +28,7 @@ class BookmarkIcon extends React.Component {
 						if (this.props.bookmarkIDSet.has(this.props.item._id)) {
 							this.props.bookmarkIDSet.delete(this.props.item._id);
 							analytics.track({
-								userId: '0',
+								userId: uuid,
 								event: 'Unbookmark',
 								properties: {
 									contentTitle: this.props.item.title,
@@ -36,7 +37,7 @@ class BookmarkIcon extends React.Component {
 						} else {
 							this.props.bookmarkIDSet.add(this.props.item._id);
 							analytics.track({
-								userId: '0',
+								userId: uuid,
 								event: 'Bookmark',
 								properties: {
 									contentTitle: this.props.item.title,

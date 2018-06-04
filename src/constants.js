@@ -1,3 +1,7 @@
+import uuidv4 from 'uuid/v4';
+
+export const uuid = uuidv4();
+
 export const routes = [
   { path:"/", component:"Home", name:"Grey Matters" },
   { path:"/search", component:"Search", name:"Search" },

@@ -18,6 +18,7 @@ import Unavailable from '../shared/Unavailable';
 import { termsActions } from '../../actions';
 import { userActions } from '../../actions';
 import { analytics } from '../../store';
+import { uuid } from '../../constants';
 import styles from './TermStyles';
 
 class Term extends Component {
@@ -83,7 +84,7 @@ class Term extends Component {
       }
     }
     analytics.page({
-      anonymousId: '0',
+      anonymousId: uuid,
       category: 'Terms',
       name: this.props.term.term,
       properties: {
