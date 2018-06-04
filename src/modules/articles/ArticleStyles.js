@@ -2,6 +2,7 @@ import {
   Dimensions,
   StyleSheet,
 } from 'react-native';
+import { colors } from '../../constants';
 
 const styles = StyleSheet.create({
   image: {
@@ -73,6 +74,12 @@ const styles = StyleSheet.create({
     lineHeight: 25,
     fontSize: 16,
   },
+  a: {
+    color: colors.blue,
+  },
+  img: {
+    width: Dimensions.get('window').width - 40,
+  }
 })
 
 export default styles;

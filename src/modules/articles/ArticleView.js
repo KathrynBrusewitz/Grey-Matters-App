@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import AutoHeightImage from 'react-native-auto-height-image';
 import ParsedText from 'react-native-parsed-text';
+import HTMLView from 'react-native-htmlview';
 import { Link } from 'react-router-native';
 import {
   Dimensions,
@@ -30,6 +31,23 @@ class ArticleView extends Component {
 
   renderText(matchingString, matches) {
     return `${matches[1]}`;
+  }
+
+  handleLinkPress(id) {
+    this.props.getTerm(id);
+  }
+
+  renderNode(node, index, siblings, parent, defaultRenderer) {
+    if(node.name == 'img') {
+      const a = node.attribs;
+      return (
+        <AutoHeightImage
+          width={Dimensions.get('window').width - 40}
+          source={{ uri: a.src }}
+          key={index}
+        />
+      )
+    }
   }
 
   render() {
@@ -65,28 +83,28 @@ class ArticleView extends Component {
                 <Text>AUTHOR</Text>
                 {
                   this.props.content.creators && this.props.content.creators.map((creator) => (
-                    // <Link
-                    //   to={`/creatorProfile/${creator._id}`}
-                    //   underlayColor='white'
-                    //   key={creator._id}
-                    // >
-                      <Text key={creator._id} style={styles.blue}>{creator.name}</Text>
-                    // </Link>
+                    <Link
+                      to={`/creatorProfile/${creator._id}`}
+                      underlayColor='white'
+                      key={creator._id}
+                    >
+                    <Text key={creator._id} style={styles.blue}>{creator.name}</Text>
+                    </Link>
                   ))
                 }
               </View>
               <View style={[styles.artist]}>
                 <Text>ARTIST</Text>
                 {
-                  this.props.content.coverImage 
+                  this.props.content.coverImage
                   && this.props.content.coverImage.artists.map((artist) => (
-                    // <Link
-                    //   to={`/creatorProfile/${artist._id}`}
-                    //   underlayColor='white'
-                    //   key={artist._id}
-                    // >
-                      <Text key={artist._id} style={styles.blue}>{artist.name}</Text>
-                    // </Link>
+                    <Link
+                      to={`/creatorProfile/${artist._id}`}
+                      underlayColor='white'
+                      key={artist._id}
+                    >
+                    <Text key={artist._id} style={styles.blue}>{artist.name}</Text>
+                    </Link>
                   ))
                 }
               </View>
@@ -94,33 +112,27 @@ class ArticleView extends Component {
                 <Text>{new Date(this.props.content.publishTime).toLocaleDateString()}</Text>
               </View>
             </View>
-            <ParsedText
-              style={styles.body}
-              parse={
-                [
-                  { pattern: /<h2>([\S\s]+)<\/h2>/, style: styles.sectionTitle, renderText: this.renderText },
-                  { pattern: /<span>([\w\s]+)<\/span>/, style: styles.blue, onPress: (term) => this.handleTermPress(term), renderText: this.renderText },
-                ]
-              }
-            >
-              {this.props.content.body}
-            </ParsedText>
+            <HTMLView
+              value={this.props.content.bodyHtml}
+              stylesheet={styles}
+              onLinkPress={(url) => console.log('clicked link: ', url)}
+              renderNode={this.renderNode}
+            />
             {references && <References references={references} />}
           </View>
         </ScrollView>
-        {this.props.terms && <TermDialog terms={this.props.terms} />}
+        {this.props.term && <TermDialog term={this.props.term} />}
       </View>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  terms: state.terms.terms,
+  term: state.terms.term,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  getTerms: termsActions.getTerms,
-  clearTerms: termsActions.clearTerms,
+  getTerm: termsActions.getTerm,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleView);

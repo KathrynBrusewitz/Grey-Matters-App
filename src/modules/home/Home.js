@@ -24,7 +24,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-		this.props.clearTerms();
+		this.props.clearTerm();
     this.props.getContents();
 	}
 
@@ -54,7 +54,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
 	getContents: contentActions.getContents,
-  clearTerms: termsActions.clearTerms,
+  clearTerm: termsActions.clearTerm,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
