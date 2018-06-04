@@ -25,7 +25,7 @@ class Home extends Component {
 
   componentDidMount() {
 		this.props.clearTerms();
-    this.props.getContent('5afea37c176b931754e35142');
+    this.props.getContents();
 	}
 
   render() {
@@ -35,25 +35,25 @@ class Home extends Component {
       );
 		}
 		
-    if (!this.props.content || this.props.content.length == 0) {
+    if (!this.props.contents || this.props.contents.length == 0) {
       return (
 				<Unavailable message='Content unavailable' />
       );
     }
     
     return (
-			<ArticleView content={this.props.content} /> 
+			<ArticleView content={this.props.contents[0]} /> 
     );
   }
 }
 
 const mapStateToProps = state => ({
-  content: state.content.content,
+  contents: state.content.contents,
 	isGettingContent: state.content.isGettingContent,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-	getContent: contentActions.getContent,
+	getContents: contentActions.getContents,
   clearTerms: termsActions.clearTerms,
 }, dispatch);
 

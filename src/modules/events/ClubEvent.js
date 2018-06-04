@@ -43,7 +43,6 @@ class ClubEvent extends Component {
         id: this.props.event._id,
       }
     });
-    console.log(this.props.event.coverImage);
     return (
       <ScrollView style={styles.container}>
         {this.props.event.coverImage ? (
