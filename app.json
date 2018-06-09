@@ -3,7 +3,7 @@
     "name": "Grey Matters",
     "icon": "./icon.png",
     "version": "1.0.0",
-    "slug": "expo.io/@sskarbek/grey-matters-app",
+    "slug": "grey-matters-app",
     "sdkVersion": "25.0.0",
     "orientation": "portrait",
     "primaryColor": "#282828",
