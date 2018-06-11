@@ -40,27 +40,27 @@ class LearningSection extends Component {
   }
 
   render() {
-    if (this.props.topImageIndex == null) {
-      return (
-        <Loading />
-      )
-    }
     analytics.page({
       anonymousId: uuid,
       category: 'Learning Section',
       name: 'Learning Section',
     });
+    console.log(this.props.baseImageIndex);
     return (
       <View style={styles.container}>
         <Image
           style={styles.image}
-          source={pages[this.props.baseImageIndex].image}
+          resizeMode='contain'
+          source={this.props.baseImageIndex ? pages[this.props.baseImageIndex].image : pages[0].image}
         />
         <Image
           style={[styles.image]}
-          source={pages[this.props.topImageIndex].image}
+          resizeMode='contain'
+          source={this.props.topImageIndex ? pages[this.props.topImageIndex].image : pages[0].image}
           onLoadEnd={() => {
-            this.props.updateBaseImage(this.props.topImageIndex)
+            if (this.props.topImageIndex) {
+              this.props.updateBaseImage(this.props.topImageIndex);
+            }
           }}
         />
         <ScrollView
