@@ -45,7 +45,6 @@ class LearningSection extends Component {
       category: 'Learning Section',
       name: 'Learning Section',
     });
-    console.log(this.props.baseImageIndex);
     return (
       <View style={styles.container}>
         <Image
