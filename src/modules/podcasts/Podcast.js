@@ -12,6 +12,7 @@ import {
 import styles from '../articles/ArticleStyles';
 import { contentActions } from '../../actions';
 import { analytics } from '../../store';
+import { uuid } from '../../constants';
 import Loading from '../shared/Loading';
 import Unavailable from '../shared/Unavailable';
 import References from '../shared/References';
@@ -40,7 +41,7 @@ class Podcast extends Component {
       );
     }
     analytics.page({
-      anonymousId: '0',
+      anonymousId: uuid,
       category: 'Podcasts',
       name: this.props.content.title,
       properties: {
@@ -65,13 +66,13 @@ class Podcast extends Component {
               <Text>{creatorTitles[this.props.content.type].toUpperCase()}</Text>
               {
                   this.props.content.creators && this.props.content.creators.map((creator) => (
-                    // <Link
-                    //   to={`/creatorProfile/${creator._id}`}
-                    //   underlayColor='white'
-                    //   key={creator._id}
-                    // >
+                    <Link
+                      to={`/creatorProfile/${creator._id}`}
+                      underlayColor='white'
+                      key={creator._id}
+                    >
                       <Text key={creator._id} style={styles.blue}>{creator.name}</Text>
-                    // </Link>
+                    </Link>
                   ))
                 }
             </View>
@@ -79,13 +80,13 @@ class Podcast extends Component {
               <Text>ARTIST</Text>
               {
                 this.props.content.artists && this.props.content.artists.map((artist) => (
-                  // <Link
-                  //   to={`/creatorProfile/${artist._id}`}
-                  //   underlayColor='white'
-                  //   key={artist._id}
-                  // >
+                  <Link
+                    to={`/creatorProfile/${artist._id}`}
+                    underlayColor='white'
+                    key={artist._id}
+                  >
                     <Text key={artist._id} style={styles.blue}>{artist.name}</Text>
-                  // </Link>
+                  </Link>
                 ))
               }
             </View>

@@ -14,14 +14,14 @@ export const termsConstants = {
   GET_TERM_SUCCESS: 'GET_TERM_SUCCESS',
   GET_TERM_FAILURE: 'GET_TERM_FAILURE',
 
-  CLEAR_TERMS: 'CLEAR_TERMS',
+  CLEAR_TERM: 'CLEAR_TERM',
 };
 
 // Creators
 export const termsActions = {
   getTerm,
   getTerms,
-  clearTerms,
+  clearTerm,
 };
 
 // Implementations
@@ -98,6 +98,6 @@ function getTerm(id) {
   function failure() { return { type: termsConstants.GET_TERM_FAILURE } }
 }
 
-function clearTerms() {
-  return {type: termsConstants.CLEAR_TERMS}
+function clearTerm() {
+  return {type: termsConstants.CLEAR_TERM}
 }

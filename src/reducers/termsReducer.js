@@ -45,10 +45,10 @@ export const termsReducer = (state = TERMS_INITIAL, action) => {
         isGettingTerms: false,
       };
 
-    case termsConstants.CLEAR_TERMS:
+    case termsConstants.CLEAR_TERM:
       return {
         ...state,
-        terms: null,
+        term: null,
       }
     default:
       return state;

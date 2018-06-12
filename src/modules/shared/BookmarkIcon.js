@@ -8,6 +8,7 @@ import {
 import { Icon } from 'react-native-elements';
 import { userActions } from '../../actions';
 import { analytics } from '../../store';
+import { uuid } from '../../constants';
 import styles from './ContentFeedStyles';
 
 class BookmarkIcon extends React.Component {
@@ -16,39 +17,41 @@ class BookmarkIcon extends React.Component {
 	}
 	
 	render() {
-		return (
-			<Icon
-				name={ this.props.bookmarkIDSet.has(this.props.item._id) ? 'ios-bookmark' : 'ios-bookmark-outline'}
-				color={ this.props.bookmarkIDSet.has(this.props.item._id) ? '#ff404e' : '#282828'}
-				type='ionicon'
-				containerStyle={styles.bookmarkIcon}
-				onPress={() => {
-					if (this.props.bookmarkIDSet.has(this.props.item._id)) {
-						this.props.bookmarkIDSet.delete(this.props.item._id);
-						analytics.track({
-							userId: '0',
-							event: 'Unbookmark',
-							properties: {
-								contentTitle: this.props.item.title,
-							}
+		if (this.props.bookmarkIDSet) {
+			return (
+				<Icon
+					name={ this.props.bookmarkIDSet.has(this.props.item._id) ? 'ios-bookmark' : 'ios-bookmark-outline'}
+					color={ this.props.bookmarkIDSet.has(this.props.item._id) ? '#ff404e' : '#282828'}
+					type='ionicon'
+					containerStyle={styles.bookmarkIcon}
+					onPress={() => {
+						if (this.props.bookmarkIDSet.has(this.props.item._id)) {
+							this.props.bookmarkIDSet.delete(this.props.item._id);
+							analytics.track({
+								userId: uuid,
+								event: 'Unbookmark',
+								properties: {
+									contentTitle: this.props.item.title,
+								}
+							});
+						} else {
+							this.props.bookmarkIDSet.add(this.props.item._id);
+							analytics.track({
+								userId: uuid,
+								event: 'Bookmark',
+								properties: {
+									contentTitle: this.props.item.title,
+								}
+							});
+						}
+						this.props.updateUser({ 
+							fields: {bookmarks: [...this.props.bookmarkIDSet]}, 
+							id: this.props.user._id,
 						});
-					} else {
-						this.props.bookmarkIDSet.add(this.props.item._id);
-						analytics.track({
-							userId: '0',
-							event: 'Bookmark',
-							properties: {
-								contentTitle: this.props.item.title,
-							}
-						});
-					}
-					this.props.updateUser({ 
-						fields: {bookmarks: [...this.props.bookmarkIDSet]}, 
-						id: this.props.user._id,
-					});
-				}}
-			/>
-		);
+					}}
+				/>
+			);
+		}
 	}
 }
 

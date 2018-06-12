@@ -20,7 +20,7 @@ const MenuLinks = (props) => (
         <View style={styles.profileNavItemView}>
           <Link 
             to="/userProfile"
-            underlayColor={colors.lightGrey}
+            underlayColor={colors.darkGrey}
             onPress={() => props.showMenu(!props.show)}
           >
             <Avatar
@@ -37,7 +37,7 @@ const MenuLinks = (props) => (
         <View style={styles.profileNavItemView}>
           <Link 
             to="/userProfile"
-            underlayColor={colors.lightGrey}
+            underlayColor={colors.darkGrey}
             onPress={() => props.showMenu(!props.show)}
           >
             <Avatar

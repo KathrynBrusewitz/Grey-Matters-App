@@ -18,6 +18,7 @@ import Unavailable from '../shared/Unavailable';
 import { termsActions } from '../../actions';
 import { userActions } from '../../actions';
 import { analytics } from '../../store';
+import { uuid } from '../../constants';
 import styles from './TermStyles';
 
 class Term extends Component {
@@ -83,14 +84,14 @@ class Term extends Component {
       }
     }
     analytics.page({
-      anonymousId: '0',
+      anonymousId: uuid,
       category: 'Terms',
       name: this.props.term.term,
       properties: {
         id: this.props.term._id,
       }
     });
-    console.log(`this.props.term.coverImage: ${JSON.stringify(this.props.term.coverImage, null, 4)}`);
+
     return (
       <KeyboardAwareScrollView 
         enableResetScrollToCoords={false} 
@@ -101,7 +102,6 @@ class Term extends Component {
             source={{ uri: `https://${this.props.term.coverImage.s3Bucket}.s3.amazonaws.com/${this.props.term.coverImage.s3Key}` }}
           />
         ) : null}
-        {/* <Image style={styles.image} source={{uri: 'http://3.bp.blogspot.com/-oulaC4PV0sw/V1Y4OskA1yI/AAAAAAAAb20/_clCVq9Y7DsvpM7CQU6PBJCTwC9D-VEsQCK4B/s1600/synapse.jpg'}}/> */}
         <View style={styles.container}>
           <Text style={styles.title}>{this.props.term.term}</Text>
           <View>

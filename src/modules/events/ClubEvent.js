@@ -12,6 +12,7 @@ import {
 import styles from './ClubEventStyles';
 import { eventsActions } from '../../actions';
 import { analytics } from '../../store';
+import { uuid } from '../../constants';
 import Loading from '../shared/Loading';
 import Unavailable from '../shared/Unavailable';
 
@@ -36,14 +37,13 @@ class ClubEvent extends Component {
       )
     }
     analytics.page({
-      anonymousId: '0',
+      anonymousId: uuid,
       category: 'Events',
       name: this.props.event.title,
       properties: {
         id: this.props.event._id,
       }
     });
-    console.log(this.props.event.coverImage);
     return (
       <ScrollView style={styles.container}>
         {this.props.event.coverImage ? (

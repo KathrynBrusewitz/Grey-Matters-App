@@ -1,3 +1,7 @@
+import uuidv4 from 'uuid/v4';
+
+export const uuid = uuidv4();
+
 export const routes = [
   { path:"/", component:"Home", name:"Grey Matters" },
   { path:"/search", component:"Search", name:"Search" },
@@ -28,5 +32,5 @@ export const colors = {
   lightGrey: '#BCBEC1',
 }
 
-export const baseURL = 'http://ec2-34-218-235-4.us-west-2.compute.amazonaws.com:8080/1.0/'; // remote
+export const baseURL = 'https://cortexapi.com/1.0/'; // remote
 // export const baseURL = 'http://localhost:8080/1.0/'; // local

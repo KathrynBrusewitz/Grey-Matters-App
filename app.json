@@ -1,5 +1,18 @@
 {
   "expo": {
-    "sdkVersion": "25.0.0"
+    "name": "Grey Matters",
+    "icon": "./icon.png",
+    "version": "1.0.0",
+    "slug": "grey-matters-app",
+    "sdkVersion": "25.0.0",
+    "orientation": "portrait",
+    "primaryColor": "#282828",
+    "splash": {
+      "backgroundColor": "#ffffff",
+      "image": "./icon.png"
+    },
+    "ios": {
+      "bundleIdentifier": "com.greymatters.greymatters"
+    }
   }
 }

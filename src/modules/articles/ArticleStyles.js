@@ -2,6 +2,7 @@ import {
   Dimensions,
   StyleSheet,
 } from 'react-native';
+import { colors } from '../../constants';
 
 const styles = StyleSheet.create({
   image: {
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   author: {
-    flex: 3,
+    flex: 1,
     marginTop: 10,
     marginBottom: 10,
     borderRightColor: '#ff404e',
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   artist: {
-    flex: 3,
+    flex: 1,
     marginTop: 10,
     marginBottom: 10,
     borderRightColor: '#ff404e',
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   date: {
-    flex: 2,
+    flex: 1,
     marginTop: 10,
     marginBottom: 10,
     alignItems: 'flex-end',
@@ -73,6 +74,12 @@ const styles = StyleSheet.create({
     lineHeight: 25,
     fontSize: 16,
   },
+  a: {
+    color: colors.blue,
+  },
+  img: {
+    width: Dimensions.get('window').width - 40,
+  }
 })
 
 export default styles;

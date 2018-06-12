@@ -296,7 +296,7 @@ function signup({ name, email, password, roles = ['reader'], history }) {
             if (res.data.success) {
               dispatch(login({ email, password, history }));
               analytics.track({
-                userId: '0',
+                userId: uuid,
                 event: 'Signup',
               });
             } else {

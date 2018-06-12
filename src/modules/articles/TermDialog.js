@@ -28,11 +28,11 @@ class TermDialog extends Component {
 				>
 					<View style={styles.dialog}>
 						{
-							this.props.terms.length > 0 ? (
+							this.props.term ? (
 								<View>
-									<Text style={styles.term}>{this.props.terms[0].term}</Text>
-									<Link to={`/terms/${this.props.terms[0]._id}`} underlayColor={'white'}>
-										<Text>{this.props.terms[0].definition}</Text>
+									<Text style={styles.term}>{this.props.term.term}</Text>
+									<Link to={`/terms/${this.props.term._id}`} underlayColor={'white'}>
+										<Text>{this.props.term.definition}</Text>
 									</Link>
 								</View>
 							) : (
@@ -42,7 +42,7 @@ class TermDialog extends Component {
 							)
 						}
 						<View >
-							<Button text60 label="Done" link onPress={() => this.props.clearTerms()} />
+							<Button text60 label="Done" link onPress={() => this.props.clearTerm()} />
 						</View>
 					</View>
 				</Dialog>
@@ -52,7 +52,7 @@ class TermDialog extends Component {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  clearTerms: termsActions.clearTerms,
+  clearTerm: termsActions.clearTerm,
 }, dispatch);
 
 export default connect(null, mapDispatchToProps)(TermDialog);

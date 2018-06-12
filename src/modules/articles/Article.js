@@ -20,7 +20,7 @@ class Article extends Component {
   }
 
   componentDidMount() {
-    this.props.clearTerms();
+    this.props.clearTerm();
     this.props.getContent(this.props.match.params.id);
   }
 
@@ -51,8 +51,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   getContent: contentActions.getContent,
-  getTerms: termsActions.getTerms,
-  clearTerms: termsActions.clearTerms,
+  clearTerm: termsActions.clearTerm,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);

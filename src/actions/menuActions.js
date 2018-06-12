@@ -7,6 +7,5 @@ export const menuActions = {
 }
 
 function showMenu(show = true) {
-  console.log(`showMenu called`);
   return {type: menuConstants.SHOW, show}
 }
